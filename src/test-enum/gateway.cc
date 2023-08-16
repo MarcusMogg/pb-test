@@ -1,9 +1,13 @@
-#include <iostream>
+#include <fstream>
 
 #include "msg.pb.h"
 
 int main() {
   Msg m;
   m.set_r(Enum::C);
-  std::cout << m.Utf8DebugString();
+
+  std::ofstream myfile;
+  myfile.open("gateway.txt");
+  myfile << m.SerializeAsString();
+  myfile.close();
 }
